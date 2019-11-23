@@ -1,16 +1,15 @@
-﻿using UnityEngine.UIElements;
-using UnityEditor.Experimental.GraphView;
+﻿using UnityEditor.Experimental.GraphView;
 
-public class SampleNode : Node
+public abstract class ProcessNode : SampleNode
 {
-	public SampleNode()
+	public ProcessNode()
 	{
-		title = "Sample";
-
 		var inputPort = Port.Create<Edge>(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(Port));
+		inputPort.portName = "In";
 		inputContainer.Add(inputPort);
 
 		var outputPort = Port.Create<Edge>(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(Port));
+		outputPort.portName = "Out";
 		outputContainer.Add(outputPort);
 	}
 }
