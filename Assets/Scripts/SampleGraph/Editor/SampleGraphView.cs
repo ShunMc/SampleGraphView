@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
 
@@ -45,5 +46,19 @@ public class SampleGraphView : GraphView
 
 	public void Execute()
 	{
+		var rootEdge = root.OutputPort.connections.FirstOrDefault();
+		if (rootEdge == null) return;
+
+		var currentNode = rootEdge.input.node as ProcessNode;
+
+		while (true)
+		{
+			currentNode.Execute();
+
+			var edge = currentNode.OutputPort.connections.FirstOrDefault();
+			if (edge == null) break;
+
+			currentNode = edge.input.node as ProcessNode;
+		}
 	}
 }

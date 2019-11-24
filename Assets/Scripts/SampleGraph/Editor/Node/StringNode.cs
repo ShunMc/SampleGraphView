@@ -10,7 +10,7 @@ public class StringNode : SampleNode
 	{
 		title = "String";
 
-		var outputPort = Port.Create<Edge>(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(string));
+		var outputPort = Port.Create<Edge>(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(string));
 		outputContainer.Add(outputPort);
 
 		textField = new TextField();

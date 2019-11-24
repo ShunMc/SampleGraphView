@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using UnityEngine.UIElements;
+using UnityEditor;
 
 public class SampleGraphEditorWindow : EditorWindow
 {
@@ -15,5 +16,7 @@ public class SampleGraphEditorWindow : EditorWindow
 			style = { flexGrow = 1 }
 		};
 		rootVisualElement.Add(graphView);
+
+		rootVisualElement.Add(new Button(graphView.Execute) { text = "Execute" });
 	}
 }
